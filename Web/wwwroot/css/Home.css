@@ -1,0 +1,599 @@
+﻿
+:root{
+    --main-color:#ff2020;
+}
+
+/* Track */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #808080; /* or any color you prefer */
+    border-radius: 5px;
+    transition: background-color .3s ease-in-out;
+}
+
+    /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+     background-color: var(--main-color); /* darker color on hover */
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* or any color you prefer */
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+html{
+    margin:0;
+    padding:0;
+}
+/* Start Header */
+
+
+header {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    /* box-shadow: 0px 0px 0 rgb(188 76 76); */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-img img {
+    height: 70px;
+    width: 62px;
+    top: 23px;
+    left: 32px;
+    margin-left: 41px;
+}
+
+.header-nav nav {
+    list-style: none;
+    font-size: 20px;
+}
+
+.header-nav nav a {
+    display: inline-block;
+    margin-left: 55px;
+    font-size: 18px;
+    text-decoration:none;
+    color:black;
+    transition :color .2s ease-in-out;
+
+}
+
+.header-nav nav a:hover{
+    color:red;
+}
+
+
+.header-icons{
+    margin:45px;
+}
+
+
+.header-icons a {
+    margin :15px;
+    color:black;
+    transition :color .5s ease-in-out;
+}
+
+.header-icons a:hover{
+    color:red;
+}
+  
+/* End Header */
+
+/* Start LangingPage */
+.landing-page {
+    display: grid;
+    height: 720px;
+    background-color: #f0f0f2;
+    grid-template-columns: 60% 30%;
+    gap: 300px;
+    overflow: hidden;
+    margin-top: 101px;
+}
+
+.landing-page .img img {
+    height: 100%;
+    transition: transform 0.9s ease-in-out;
+}
+
+.zoomed {
+    transform: scale(1.4); /* Adjust the scale factor for zoom level */
+}
+
+
+.landing-page .text {
+    padding: 67px;
+    font-size: 32px;
+    color: #161641;
+    margin-left: 24px;
+}
+
+
+
+
+
+.landing-page .text .btn {
+    color: white;
+    background-color: #4a4a4b;
+    margin-top: 40px;
+    height: 70px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s ease-in-out;
+    font-size:23px;
+    font-style:normal;
+}
+
+.landing-page .text .btn:hover {
+    background-color: #fe2122;
+}
+
+
+.landing-page .text .text-span {
+   font-style: italic;
+   font-size: 20px;
+}
+
+/* End Landing page*/
+
+/*Start New Arrival*/
+
+.new-arrival {
+    font-size: 31px;
+    margin-top: 250px;
+    margin-left: 30px;
+}
+.new-arrival h1{
+    margin-left:195px;
+}
+
+.new-arrival .items-container {
+    height: auto;
+    margin-top: 75px;
+    margin :75px 30px;
+    display: flex;
+    justify-content: center;
+    overflow:hidden;
+}
+
+.new-arrival .items-container .item{
+    overflow:hidden;
+    text-align:center;
+    margin: 0px 20px;
+}
+
+.new-arrival .items-container .item img{
+    height:530px;
+    transition:transform .3s ease-in-out;
+}
+
+.new-arrival .items-container .item img:hover{
+    transform:scale(1.06);
+}
+
+.new-arrival .items-container .item h4{
+    color:#444444;
+    font-weight:700;
+    font-size:24px;
+    margin-top:50px;
+}
+
+.new-arrival .items-container .item h5{
+    color: #ff2020;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+/*End New Arrival*/
+
+/*Starrt Second Arrival */
+
+.second-arrival{
+    margin:0;
+    padding:0;
+    margin-top:230px;
+    
+}
+
+.second-arrival .item{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.second-arrival .item img {
+        width: 80%;
+        height: 750px;
+        transition: transform 0.8s ease-in-out, filter 1s ease-in-out; /* Adjust the filter transition */
+}
+
+.second-arrival .item img:hover 
+{
+        transform: scale(1.02); 
+        filter: brightness(75%);
+}
+
+/* End Second Arrival*/
+
+/* Start Popular Items*/
+.popular-items{
+    margin-top:300px;
+}
+
+.popular-items .text{
+    width:50%;
+    text-align:center;
+    margin-left:400px;
+}
+
+.popular-items .text h1{
+    font-size:50px;
+}
+
+.popular-items .text span{
+    color:#777;
+    font-size:20px;
+    font-style:italic;
+}
+
+.popular-items .items-space{
+    margin-top:80px;
+    width:78%;
+    margin-left:12%; /*Get in the Middle*/
+}
+
+
+
+.popular-items .item{
+    margin-top:50px;
+    width: 30%; /* Set the width to approximately 30% to fit three items in a row */
+    display: inline-block;
+    text-align: center; /* Center the content within each item */
+    position:relative;
+}
+
+.popular-items .item .overlay{
+    position: absolute;
+    height: 7px;
+    width: 90%;
+    bottom: 153px;
+    left: 19px;
+    background-color: #fe2122;
+}
+
+.popular-items .item .img{
+    height:360px;
+    width:380px;
+}
+
+.popular-items .item h4{
+    color:#444444;
+    font-weight:700;
+    font-size:24px;
+    margin-top:50px;
+}
+
+.popular-items .item h5{
+    color: #ff2020;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.popular-items .item .addtocart {
+    position: absolute;
+    height: 70px;
+    width: 90%;
+    bottom: 86px;
+    left: 19px;
+    background-color: #fe2122;
+    color: white;
+    opacity: 0;
+    visibility:hidden;
+    transition: opacity .3s ease-in-out;
+}
+
+.popular-items .item:hover .addtocart {
+    visibility:visible;
+    bottom: 153px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+
+
+/* End Popular Items */
+
+/*Start Watch of Choice*/
+
+.watchofchoice{
+    margin-top: 100px;
+    padding: 90px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.watchofchoice img{
+
+}
+
+.watchofchoice .text{
+    margin-left:100px;
+}
+
+.watchofchoice .text h1{
+        color: #000;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.watchofchoice .text span{
+    margin-bottom: 50px;
+    font-size: 20px;
+    color:#777;
+}
+
+.watchofchoice .text a{
+    text-decoration:none;
+}
+
+.watchofchoice .text a .showwatches{
+    margin-top:70px;
+    background-color:#ff2020;
+    height: 68px;
+    width: 239px;
+    color:white;
+    font-size:27px;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: background-color .4s ease-in-out;
+}
+
+.watchofchoice .text a .showwatches:hover{
+    background-color:#444444;
+}
+
+/*End Watch of Choice*/
+
+/*Start Features*/
+
+.features{
+  position:relative;
+  height:200px;
+}
+
+.features .bar{
+    width:80%;
+    position:absolute;
+    left:50%;
+    height:200px;
+    background-color:#ea0000;
+    transform:translate(-50%,50%);
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.features .bar span{
+    font-size: 16px;
+    color: #d3d1d1;
+}
+
+.features .bar i{
+    font-size:40px;
+}
+
+.features .bar .item{
+    margin-right:20px;
+    margin-left:30px;
+    width:350px;
+}
+
+/*End Features*/
+
+/*Start Footer*/
+
+.footer {
+    background-color: white;
+    height: 300px;
+    width: 100px;
+    display: block;
+    margin-top: 300px;
+    width: 90%;
+    margin-left: 146px;
+}
+
+.footer .part{
+    display: inline-block;
+    width: 23%;
+    line-height: 24px;
+    font-size: 19px;
+}
+
+.footer img{
+    height:88px;
+    display:block;
+    margin-bottom:39px;
+}
+
+.footer span{
+    color:#868c98;
+}
+
+.footer .part h4{
+        color: #000;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-left:10px;
+    margin-left: 34px;
+    font-size: 26px;
+
+}
+
+.footer .part nav{
+    list-style-type:none;
+    margin-left:35px;
+}
+
+.footer .part nav a{
+    display:block;
+    text-decoration:none;
+    color: #868c98;
+    font-weight: 300;
+    line-height:2;
+    transition: margin-left .3s ease-in-out , color .3s ease-in-out;
+}
+
+.footer .part nav a:hover{
+    color:var(--main-color);
+    margin-left:4px;
+}
+
+/* End Footer */
+
+/*Start Last*/
+
+.last{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    margin-top:200px;
+    margin-bottom:50px;
+}
+
+.last .text p{
+    color: #888888;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+
+
+.last .icon a{
+    text-decoration:none;
+    color:black;
+}
+
+.last .icon i{
+    margin:0px 6px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.last .icon i:hover{
+     color: red;
+    transform: rotate(180deg);
+}
+
+/*End Last*/
+
+/*Start Floating icon*/
+
+.floating-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e30213;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.floating-icon img {
+    width: 30px; 
+    height: 30px;
+    display: block;
+    margin: auto;
+
+}
+
+#scrollToTopBtn.hidden {
+    opacity: 0;
+}
+
+
+/*End Floating Icon*/
+
+#loadingSpinner {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 16px solid #d3d1d1;
+    border-top: 16px solid #fe2122;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.checkout-buttonfinal {
+    background-color: #343a40; /* Dark background color */
+    color: #ffffff; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width:200px;
+    height:70px;
+    margin-left:350px;/* Add smooth transition effect */
+}
+
+    .checkout-buttonfinal:hover {
+        background-color: #555b62; /* Darker background color on hover */
+    }

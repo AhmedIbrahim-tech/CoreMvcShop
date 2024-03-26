@@ -1,0 +1,239 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Infrastructure.Models.Identity.ApplicationUser> _signInManager
+@model List<Core.ViewModels.ProductViewModel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/Home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <title>E-Shop</title>
+</head>
+<body>
+
+    <div id="loadingSpinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+
+    
+    <header>
+        
+        <div class="header-img">
+            <img src="/Images/Home/StreamlineEShop.png">
+        </div>
+        
+        <div class="header-nav">
+            <nav>
+                <a href="/Home">Home</a>
+                <a href="/Shop">Shop</a>
+                <a href="/About">About</a>
+                <a href="/Contact">Contact</a>
+            </nav>
+        </div>
+        
+        <div class="header-icons">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            @if (!_signInManager.IsSignedIn(User))
+            {
+                <a href="/Account/Login"> <i class="fa-regular fa-user"></i></a>
+            }
+            else
+            {
+                <a href="/Account/LogOut"><i class="fa-solid fa-right-from-bracket"></i></a>
+            }
+
+            <a href="/Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            @if(User.IsInRole("Admin"))
+            {
+               <a href="/Admin"> <i class="fa-solid fa-hammer"></i></a>
+            }
+
+        </div>
+
+    </header>
+
+
+
+    <div class="landing-page">
+        <div class="text">
+            <h1>Select Your New Perfect Style </h1>
+            <span class="text-span">Welcome to our exquisite watch emporium, where time meets elegance. Explore a curated collection of precision timepieces that blend craftsmanship and style seamlessly. From classic designs to avant-garde innovations, our watch store caters to aficionados who appreciate the artistry of every ticking second.</span>
+            
+            <a href="/Shop" style="text-decoration:none">
+
+                <div class="btn">
+                    <span>Shop Now</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="img">
+            <img src="Images/Home/Watch.png">
+        </div>
+    </div>
+
+    <div class="new-arrival">
+
+        <h1>New Arrival</h1>
+        
+        <div class="items-container">
+           <div class="item">
+                <img src="/Images/Home/Arrival1.png" alt="Product Image" />
+                <h4>Thermo Ball Etip Gloves</h4>
+                <h5>$ 55.23</h5>
+            </div>
+
+            <div class="item">
+                <img src="/Images/Home/Arrival2.png" alt="Product Image" />
+                <h4>Thermo Ball Etip Gloves</h4>
+                <h5>$ 55.23</h5>
+            </div>
+
+            <div class="item">
+                <img src="/Images/Home/Arrival3.png" alt="Product Image" />
+                <h4>Thermo Ball Etip Gloves</h4>
+                <h5>$ 55.23</h5>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <div class="second-arrival">
+        <div class="item">
+            <img src="/Images/Home/Arrival7.webp" alt="Product Image" />
+        </div>
+    </div>
+
+
+    <div class="popular-items">
+       <div class="text">
+          <h1>Popular Items</h1>
+          <span>Explore our curated collection of popular items, carefully selected for their quality and style, to discover the latest trends and timeless classics in one convenient section</span>
+		</div>
+       
+        <div class="items-space">
+           @foreach(var product in Model){
+              <div class="item">
+                    <a href="/Cart/AddToCart/@product.Id">
+                        <img src="data:image/png;base64,@Convert.ToBase64String(product.Img)" alt="Product Image" />
+                    </a>
+                         <h4>@product.Name</h4>
+                         <h5>$ @product.Price</h5>
+                         <div class="overlay"></div>
+                    <a href="/Cart/AddToCart/@product.Id"><div class="addtocart"><span>Add To Cart</span></div></a>
+                    </div>
+			    }
+        </div>
+    </div>
+
+    <div class="watchofchoice">
+        <img src="/Images/Home/choce_watch1.png.webp"/>
+        
+        <div class="text">
+            <h1>Watch Of Choice</h1>
+            <span>Unveil timeless elegance with our watch of choice collection, where precision meets style. Elevate your moments with meticulously crafted timepieces that blend sophistication and functionality effortlessly.</span>
+            <a href="/Shop"><div class="showwatches"><p>Show Watches</p></div></a>
+        </div>
+
+    </div>
+
+    <div class="watchofchoice" style="margin-top:42px">
+        <div class="text" style="margin-right:70px;">
+            <h1>Watch Of Choice</h1>
+            <span>Unveil timeless elegance with our watch of choice collection, where precision meets style. Elevate your moments with meticulously crafted timepieces that blend sophistication and functionality effortlessly.</span>
+            <a href="/Shop"><div class="showwatches"><p>Show Watches</p></div></a>
+        </div>
+        <img src="/Images/Home/choce_watch2.png.webp" />
+
+    </div>
+
+    <div class="features">
+        <div class="bar">
+
+            <div class="item">
+                <i class="fa-solid fa-box"></i>
+                <h3>Free Shipping Method</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+            <div class="item">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Secure Shipping Method</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+            <div class="item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Secure Payment System</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="part">
+        <img  src="/Images/Home/StreamlineEShop.png"/>
+            <span>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</span>
+        </div>
+        
+        <div class="part">
+            <h4>Quick Links</h4>
+            
+            <nav>
+                <a href="#">About</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Get Coupon</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+
+        <div class="part">
+            <h4>New Products</h4>
+
+            <nav>
+                <a href="#">About</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Get Coupon</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+
+        <div class="part">
+            <h4>Support</h4>
+
+            <nav>
+                <a href="#">Frequently Asked Questions</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="last">
+        <div class="text">
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </div>
+
+        <div class="icon">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <!-- Floating icon -->
+    <div class="floating-icon" id="scrollToTopBtn">
+        <img src="/Images/Home/scroll-to-top.png" alt="Scroll to Top">
+    </div>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

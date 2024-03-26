@@ -1,0 +1,15 @@
+﻿global using Core;
+global using Infrastructure;
+global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper;
+global using Infrastructure.Context;
+global using Microsoft.EntityFrameworkCore;
+global using Core.UnitOfWork;
+global using Core.Interfaces;
+global using Core.Repositories;
+global using Core.Base;
+global using Core.AutoMapper;
+global using Infrastructure.Models.Identity;
+global using Core.ViewModels;
+global using Core.Specifications;
+global using Infrastructure.Models;

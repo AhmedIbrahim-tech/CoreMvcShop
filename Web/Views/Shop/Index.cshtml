@@ -1,0 +1,220 @@
+﻿@model List<Product>;
+@{
+    var Categories = ViewData["Categories"] as List<Category>;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/Home.css">
+    <link rel="stylesheet" href="~/css/Shop.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <title>Shopping</title>
+</head>
+<body>
+
+    <div id="loadingSpinner" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+
+        <div class="header-img">
+            <img src="Images/Home/StreamlineEShop.png">
+        </div>
+        
+        <div class="header-nav">
+            <nav>
+                <a href="/Home">Home</a>
+                <a href="/Shop">Shop</a>
+                <a href="/About">About</a>
+                <a href="/Contact">Contact</a>
+            </nav>
+        </div>
+
+        <div class="header-icons">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            @if (!_signInManager.IsSignedIn(User))
+            {
+                <a href="/Account/Login"> <i class="fa-regular fa-user"></i></a>
+            }
+            else
+            {
+                <a href="/Account/LogOut"><i class="fa-solid fa-right-from-bracket"></i></a>
+            }
+            <a href="/Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a href="/Admin"> <i class="fa-solid fa-hammer"></i></a>
+            }
+        </div>
+
+    </header>
+
+    <div class="shop-landing-page">
+        <h1>Watch Shop</h1>
+    </div>
+
+
+
+
+
+   <div class="shop-form">
+    <div class="shop-div">
+        <!-- Filtering Form -->
+        <div>
+        <label class="shop-label" for="CategoryId">Category:</label>
+        <select class="shop-select" id="CategoryId" name="CategoryId">
+            <option value="">All Categories</option>
+            @foreach (var category in Categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
+        </div>
+
+        <div>
+        <label class="shop-label" for="minPrice">Min Price:</label>
+        <input class="shop-input" type="number" id="MinPrice" name="MinPrice" min="0">
+        </div>
+
+        <div>
+        <label class="shop-label" for="maxPrice">Max Price:</label>
+            <input class="shop-input" type="number" id="MaxPrice" name="MaxPrice" min="0">
+        </div>
+        <button class="shop-button" style="display:block;" id="applyFilters">Apply Filters</button>
+    </div>
+    </div>
+
+    <div id="product-list" class="product-list">
+        <!-- Display filtered products -->
+        @Html.Partial("_filterProducts")
+    </div>
+
+    <div class="pagination">
+        <!-- Pagination controls -->
+        <!-- You may use a library or implement your own pagination controls -->
+    </div>
+
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#applyFilters").click(function () {
+                var categoryId = $("#CategoryId").val();
+                var minPrice = $("#MinPrice").val();
+                var maxPrice = $("#MaxPrice").val();
+
+                // Option 1: Update partial view using AJAX (example)
+                $.ajax({
+                    url: "/Shop/FilterProducts", // Replace with your controller and action URL
+                    data: {
+                        categoryId: categoryId,
+                        minPrice: minPrice,
+                        maxPrice: maxPrice
+                    },
+                    success: function (data) {
+                        $("#product-list").html(data);
+                    }
+                });
+
+                // Option 2: Redirect to partial view action with parameters (example)
+                // window.location.href = "/Home/PartialViewWithFilters?categoryId=" + categoryId + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+    <div class="features">
+        <div class="bar">
+
+            <div class="item">
+                <i class="fa-solid fa-box"></i>
+                <h3>Free Shipping Method</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+            <div class="item">
+                <i class="fa-solid fa-lock"></i>
+                <h3>Secure Shipping Method</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+            <div class="item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Secure Payment System</h3>
+                <span>aorem ixpsacdolor sit ameasecur adipisicing elitsf edasd.</span>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="part">
+            <img src="/Images/Home/StreamlineEShop.png" />
+            <span>Asorem ipsum adipolor sdit amet, consectetur adipisicing elitcf sed do eiusmod tem.</span>
+        </div>
+
+        <div class="part">
+            <h4>Quick Links</h4>
+
+            <nav>
+                <a href="#">About</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Get Coupon</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+
+        <div class="part">
+            <h4>New Products</h4>
+
+            <nav>
+                <a href="#">About</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Get Coupon</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </div>
+
+        <div class="part">
+            <h4>Support</h4>
+
+            <nav>
+                <a href="#">Frequently Asked Questions</a>
+                <a href="#">Offers & Discounts</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="last">
+        <div class="text">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </div>
+
+        <div class="icon">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <!-- Floating icon -->
+    <div class="floating-icon" id="scrollToTopBtn">
+        <img src="/Images/Home/scroll-to-top.png" alt="Scroll to Top">
+    </div>
+   
+    <script src="~/js/site.js"></script>
+</body>
+</html>
